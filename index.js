@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+var data = require('.data/test.json')
 
 app.set('view engine', 'ejs')
 
@@ -44,6 +45,18 @@ app.get('/project', (req, res) => {
   })
 })
 
+app.get('/users', (req, res) => {
+  var title = 'My Users Page'
+  var heading = 'My Website'
+  res.render('users/index',{
+    'title':title,
+    'heading':heading,
+    'users':data
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+  consol.log(data);
+
 })
